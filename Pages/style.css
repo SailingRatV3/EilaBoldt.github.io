@@ -1,126 +1,159 @@
-*{
-    margin: 0;
-    padding: 0;
-    
-    box-sizing: border-box;
-}
-
-body{
+body {
     background: #080808;
     color: #fff;
-}
-
-element{
-    position: relative;
-    height: 7923.85;
-    width: 766.4;
-    margin-left: -20;
-}
-
-div{
-    border:0;
-    font-family: inherit;
-    font-size: 100%;
-    font-style: inherit;
-    font-weight: inherit;
-    margin: 0;
-    outline: 0;
-    padding: 0;
-}
-
-#primary{
-    margin-bottom: 20;
-}
-
-#header{
-    width: 100%;
-    height: 100vh;
-    
-}
-
-.header{
-    z-index: 10;
-    position: absolute
-    
-}
-
-.section-border{
-    position: absolute;
-    
-}
-
-.section-background{
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.page-section{
-    position: relative;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-}
-
-.portfolio-wrapper{
-    width: 100%;
-    margin: 0;
-    padding:0,0,40;
-    margin-bottom: -20;
-    display: block;
-    margin-right: auto;
-}
-
-.portfolio-thumbnail{
-    position: relative;
-    z-index: 1;
-    margin-bottom:20;
-    text-align: center;
-    line-height: 0;
-}
-
-.portfolio-entry-header{
-    text-align: center;
-}
-
-.entry-title{
-    margin:0;
-    font-size: 1.2;
-    font-weight: 900;
-    text-transform: uppercase;
-    text-align: center;
-    word-wrap: break-word
-}
-
-.portfolio-entry-meta{
-    padding-right: 20;
-    padding-left: 20;
-    padding-top: 10;
-    color: #7f8d8c;
-    font-family: "PT Serif", serif;
-    line-height: 1.3;
-    font-style: italic;
-    text-align: center;
-}
-
-h1{
-    line-height: 1.2;
-}
-
-h1,h2,h3,h4,h5,h6{
-    clear: both;
-    color:#080808;
     font-family: "Source Sans Pro", sans-serif;
-
 }
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td{
-    border: 0;
-    font-style: inherit;
-    outline: 0;
-    padding: 0;
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.portfolio-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    padding: 60px;
+}
+
+.portfolio-item {
+    text-align: center;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.entry-title {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.entry-title a {
+    color: white;
+    text-decoration: none;
+}
+
+.entry-title a:hover {
+    color: #7f8d8c;
+}
+
+.portfolio-entry-meta {
+    margin-top: 5px;
+    color: #7f8d8c;
+    font-style: italic;
+}
+
+/* Project Page Layout */
+.project-header {
+    padding: 20px 40px;
+}
+
+.back-link {
+    color: #7f8d8c;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.back-link:hover {
+    color: #ffffff;
+}
+
+.project-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 40px 80px;
+}
+
+/* Hero Image */
+.project-hero img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+/* Intro */
+.project-intro h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.project-intro p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #d0d0d0;
+}
+
+/* Sections */
+.project-section {
+    margin-top: 50px;
+}
+
+.project-section h2 {
+     text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+.project-section p {
+    line-height: 1.6;
+    color: #d0d0d0;
+}
+
+/* Gallery */
+.project-gallery {
+    margin-top: 60px;
+}
+
+.project-gallery h2 {
+     text-align: center;
+    margin-bottom: 20px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Intro Section on Home Page */
+.home-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 40px;
+}
+
+.intro {
+    margin-bottom: 80px;
+    max-width: 700px;
+}
+
+.intro h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+}
+
+.intro p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #d0d0d0;
 }
