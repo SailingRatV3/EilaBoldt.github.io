@@ -29,7 +29,7 @@ Another challenge was to readjust the game feel, as the moving platform speed an
 
     <!-- Image -->
     <section class="project-hero">
-        <img src="images/shadow-sunder-hero.jpg" alt="Shadow Sunder Hero Image">
+        <img src="Images/ancient-ice5.jpg" alt="Ancient Ice Glaciers Hero Image">
     </section>
 
     <!-- Project Title -->
@@ -76,14 +76,68 @@ Another challenge was to readjust the game feel, as the moving platform speed an
         <h2>Gallery</h2>
 
         <div class="gallery-grid">
-            <img src="images/ancient-ice1.jpg" alt="Gameplay Screenshot 1">
-            <img src="images/ancient-ice2.jpg" alt="Gameplay Screenshot 2">
-            <img src="images/ancient-ice3.jpg" alt="Gameplay Screenshot 3">
-            <img src="images/ancient-ice4.jpg" alt="Gameplay Screenshot 4">
+            <img src="Images/ancient-ice1.png" alt="Gameplay Screenshot 1" data-index="0">
+            <img src="Images/ancient-ice2.png" alt="Gameplay Screenshot 2" data-index="1">
+            <img src="Images/ancient-ice3.png" alt="Gameplay Screenshot 3" data-index="2">
+            <img src="Images/ancient-ice4.png" alt="Gameplay Screenshot 4" data-index="3">
         </div>
     </section>
 
 </main>
+<div class="lightbox" id="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-img" id="lightbox-img">
+    <button class="nav prev">&#10094;</button>
+    <button class="nav next">&#10095;</button>
+</div>
 
+<script>
+const caption = document.getElementById('lightbox-caption');
+const images = document.querySelectorAll('.gallery-grid img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeBtn = document.querySelector('.close');
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
+
+let currentIndex = 0;
+
+
+
+images.forEach(img => {
+    img.addEventListener('click', () => {
+        currentIndex = parseInt(img.dataset.index);
+        showImage();
+        lightbox.classList.add('active');
+    });
+});
+
+function showImage() {
+    lightboxImg.src = images[currentIndex].src;
+    const caption = document.getElementById('lightbox-caption');
+    caption.textContent = images[currentIndex].alt;
+}
+
+nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage();
+});
+
+prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage();
+});
+
+closeBtn.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+});
+
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+    }
+});
+document.body.style.overflow = '';
+</script>
 </body>
 </html>

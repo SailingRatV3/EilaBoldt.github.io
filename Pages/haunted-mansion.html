@@ -37,7 +37,7 @@ During this level playtesting, players would have different experiences and inte
 
     <!-- Image -->
     <section class="project-hero">
-        <img src="images/shadow-sunder-hero.jpg" alt="Shadow Sunder Hero Image">
+        <img src="Images/haunted-mansion3.png" alt="Haunted Mansion Hero Image">
     </section>
 
     <!-- Project Title -->
@@ -93,14 +93,70 @@ During this level playtesting, players would have different experiences and inte
         <h2>Gallery</h2>
 
         <div class="gallery-grid">
-            <img src="images/haunted-mansion1.jpg" alt="Gameplay Screenshot 1">
-            <img src="images/haunted-mansion2.jpg" alt="Gameplay Screenshot 2">
-            <img src="images/haunted-mansion3.jpg" alt="Gameplay Screenshot 3">
-            <img src="images/haunted-mansion4.jpg" alt="Gameplay Screenshot 4">
+            <img src="Images/haunted-mansion1.jpg" alt="Gameplay Screenshot 1" data-index="0">
+            <img src="Images/haunted-mansion2.jpg" alt="Gameplay Screenshot 2" data-index="1">
+            
+            <img src="Images/haunted-mansion4.png" alt="Gameplay Screenshot 3" data-index="2">
+            <img src="Images/haunted-mansion5.png" alt="Gameplay Screenshot 4" data-index="3">
+            <img src="Images/haunted-mansion6.png" alt="Gameplay Screenshot 5" data-index="4">
         </div>
     </section>
 
 </main>
+<div class="lightbox" id="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-img" id="lightbox-img">
+    <button class="nav prev">&#10094;</button>
+    <button class="nav next">&#10095;</button>
+</div>
 
+<script>
+const caption = document.getElementById('lightbox-caption');
+const images = document.querySelectorAll('.gallery-grid img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeBtn = document.querySelector('.close');
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
+
+let currentIndex = 0;
+
+
+
+images.forEach(img => {
+    img.addEventListener('click', () => {
+        currentIndex = parseInt(img.dataset.index);
+        showImage();
+        lightbox.classList.add('active');
+    });
+});
+
+function showImage() {
+    lightboxImg.src = images[currentIndex].src;
+    const caption = document.getElementById('lightbox-caption');
+    caption.textContent = images[currentIndex].alt;
+}
+
+nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage();
+});
+
+prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage();
+});
+
+closeBtn.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+});
+
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+    }
+});
+document.body.style.overflow = '';
+</script>
 </body>
 </html>

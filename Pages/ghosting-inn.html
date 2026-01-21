@@ -27,7 +27,7 @@ The goal for the building had 2 areas of exploration which are the inside Cedar 
 
     <!-- Image -->
     <section class="project-hero">
-        <img src="images/shadow-sunder-hero.jpg" alt="Shadow Sunder Hero Image">
+        <img src="Images/ghosting-inn1.png" alt="Ghosting Inn Hero Image">
     </section>
 
     <!-- Project Title -->
@@ -65,14 +65,71 @@ The goal for the building had 2 areas of exploration which are the inside Cedar 
         <h2>Gallery</h2>
 
         <div class="gallery-grid">
-            <img src="images/shadow1.jpg" alt="Gameplay Screenshot 1">
-            <img src="images/shadow2.jpg" alt="Gameplay Screenshot 2">
-            <img src="images/shadow3.jpg" alt="Gameplay Screenshot 3">
-            <img src="images/shadow4.jpg" alt="Gameplay Screenshot 4">
+           
+            <img src="Images/ghosting-inn2.png" alt="Gameplay Screenshot 2" data-index="0">
+            <img src="Images/ghosting-inn3.png" alt="Gameplay Screenshot 3" data-index="1">
+            <img src="Images/ghosting-inn4.png" alt="Gameplay Screenshot 4" data-index="2">
         </div>
     </section>
 
 </main>
+<div class="lightbox" id="lightbox">
+    <span class="close">&times;</span>
+    <div class="lightbox-content">
+        <img class="lightbox-img" id="lightbox-img">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+    <button class="nav prev">&#10094;</button>
+    <button class="nav next">&#10095;</button>
+</div>
 
+<script>
+const caption = document.getElementById('lightbox-caption');
+const images = document.querySelectorAll('.gallery-grid img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeBtn = document.querySelector('.close');
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
+
+let currentIndex = 0;
+
+
+
+images.forEach(img => {
+    img.addEventListener('click', () => {
+        currentIndex = parseInt(img.dataset.index);
+        showImage();
+        lightbox.classList.add('active');
+    });
+});
+
+function showImage() {
+    lightboxImg.src = images[currentIndex].src;
+    const caption = document.getElementById('lightbox-caption');
+    caption.textContent = images[currentIndex].alt;
+}
+
+nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage();
+});
+
+prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage();
+});
+
+closeBtn.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+});
+
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+    }
+});
+document.body.style.overflow = '';
+</script>
 </body>
 </html>
